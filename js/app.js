@@ -3,6 +3,8 @@
   .then(data => {
   data.forEach(animal => {
     new Animal(animal).render();
+    // new Animal(animal).filter();
+  
   })
 })
 
@@ -11,6 +13,7 @@
 // fill the template with each object instance
 // render that to the page
 let animalArray = [];
+const newOptionArray = [];
 
 function Animal(obj){
 this.title = obj.title;
@@ -35,7 +38,39 @@ $newSection.find('h2').text(this.title);
 $newSection.find('img').attr('src', this.image_url);
 // find the p and assign it to the hobbies
 $newSection.find('p').text(this.description);
-
 // append it to the main
 $('main').append($newSection);
+
+//keyword options
+
+
+for (let i = 0; i < animalArray.length; i++ ){
+  if (!newOptionArray.includes(animalArray.keyword)){
+    newOptionArray.push(animalArray.keyword);
+  }
+  const $newOption = $(`<option>${newOptionArray.keyword}</option>`);
+  $('select').append($newOption);
+
 }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Animal.prototype.filter = function(){
+// const $newOption = $(`<option>${this.keyword}</option>`);
+// $('select').append($newOption);
+// }
