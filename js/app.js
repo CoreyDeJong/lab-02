@@ -1,9 +1,10 @@
+'use strict'
 
   $.ajax('/data/page-1.json', {method: 'GET', dataType: 'JSON'})
   .then(data => {
   data.forEach(animal => {
     new Animal(animal).render();
-    // new Animal(animal).filter();
+    new Animal(animal).filter();
   
   })
 })
@@ -13,7 +14,6 @@
 // fill the template with each object instance
 // render that to the page
 let animalArray = [];
-const newOptionArray = [];
 
 function Animal(obj){
 this.title = obj.title;
@@ -25,14 +25,14 @@ animalArray.push(this);
 }
 
 Animal.prototype.render = function(){
-// select all the html in the template
-const myTemplate = $('#photo-template').html();
-
-// make a new section 
-const $newSection = $('<section></section>');
-// fill that new section with the template html
-$newSection.html(myTemplate);
-// find the h2, and assign it to the name
+  // select all the html in the template
+  const myTemplate = $('#photo-template').html();
+  
+  // make a new section 
+  const $newSection = $('<section></section>');
+  // fill that new section with the template html
+  $newSection.html(myTemplate);
+  // find the h2, and assign it to the name
 $newSection.find('h2').text(this.title);
 // find the image and assign it to the image_url
 $newSection.find('img').attr('src', this.image_url);
@@ -41,21 +41,23 @@ $newSection.find('p').text(this.description);
 // append it to the main
 $('main').append($newSection);
 
+}
+
 //keyword options
+const newOptionArray = [];
 
 
-for (let i = 0; i < animalArray.length; i++ ){
-  if (!newOptionArray.includes(animalArray.keyword)){
-    newOptionArray.push(animalArray.keyword);
+Animal.prototype.filter = function(){
+  for (let i = 0; i < animalArray.length; i++ ){
+    if (!newOptionArray.includes(animalArray[i].keyword)){
+      newOptionArray.push(animalArray[i].keyword);
+    }
   }
-  const $newOption = $(`<option>${newOptionArray.keyword}</option>`);
-  $('select').append($newOption);
-
+  for (let i = 0; i <newOptionArray.length; i++){
+      const $newOption = $(`<option>${newOptionArray[i]}</option>`);
+      $('select').append($newOption);
+  }
 }
-
-
-}
-
 
 
 
@@ -73,4 +75,3 @@ for (let i = 0; i < animalArray.length; i++ ){
 // Animal.prototype.filter = function(){
 // const $newOption = $(`<option>${this.keyword}</option>`);
 // $('select').append($newOption);
-// }
