@@ -19,12 +19,10 @@ function Animal(obj){
 }
 
 Animal.prototype.render = function(){
-  // const source = $('#temp').html();
-  // const template = Handlebars.compile(source);
-  // const context = { title: this.title, image_url: this.image_url, description: this.description};
-  // return template(context);
-
-
+  const source = $('#temp').html();
+  const template = Handlebars.compile(source);
+  const context = { title: this.title, image_url: this.image_url, description: this.description};
+  return template(context);
 }
 
 animalArray.forEach(animal=>{

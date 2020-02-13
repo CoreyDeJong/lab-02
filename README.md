@@ -1,15 +1,13 @@
-# labs
+# labs 3
 Number and name of feature:
-Feature #1: Display images
-Feature #2: Filter images
-Feature #3: Style the application
+None
 
-Estimate of time needed to complete: 3 hours
+Estimate of time needed to complete: 9 hours
 
-Start time: 9:30AM 2/12
+Start time: 10:30AM 2/13
 
-Finish time: 10.30AM 2/13
+Finish time: tbd
 
-Actual time needed to complete: 7 hours.
+Actual time needed to complete: tbd
 
 This code base is a result of pair programming of Teddy and Corey
