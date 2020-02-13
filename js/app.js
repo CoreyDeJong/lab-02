@@ -58,9 +58,9 @@ function renderKeyword() {
     $option.append($newOption);
   });
 
-  $('select').on('change',function(){
-    let $selected = this.value;
+  // $('select').on('change',function(){
+  //   let $selected = this.value;
     
-  })
+  // })
 }
 
