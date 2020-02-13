@@ -1,10 +1,13 @@
-# labs
-Number and name of feature: ?
+# labs 3
+Number and name of feature:
+None
 
-Estimate of time needed to complete: 2 hours
+Estimate of time needed to complete: 9 hours
 
-Start time: 9:30
+Start time: 10:30AM 2/13
 
-Finish time: 1pm
+Finish time: tbd
 
-Actual time needed to complete: n/a couldn't get drop down options to filter to only one reoccurrence by 1pm.
+Actual time needed to complete: tbd
+
+This code base is a result of pair programming of Teddy and Corey
