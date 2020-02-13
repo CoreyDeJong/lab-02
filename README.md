@@ -1,10 +1,15 @@
 # labs
-Number and name of feature: ?
+Number and name of feature:
+Feature #1: Display images
+Feature #2: Filter images
+Feature #3: Style the application
 
-Estimate of time needed to complete: 2 hours
+Estimate of time needed to complete: 3 hours
 
-Start time: 9:30
+Start time: 9:30AM 2/12
 
-Finish time: 1pm
+Finish time: 10.30AM 2/13
 
-Actual time needed to complete: n/a couldn't get drop down options to filter to only one reoccurrence by 1pm.
+Actual time needed to complete: 7 hours.
+
+This code base is a result of pair programming of Teddy and Corey
