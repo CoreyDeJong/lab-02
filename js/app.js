@@ -1,6 +1,6 @@
 'use strict'
 
-$.ajax('/data/page-1.json', {method: 'GET', dataType: 'JSON'})
+$.ajax('data/page-1.json', {method: 'GET', dataType: 'JSON'})
   .then(data => {
     data.forEach(animal => {
       new Animal(animal).render()
