@@ -4,8 +4,8 @@ $.ajax('/data/page-1.json', {method: 'GET', dataType: 'JSON'})
   .then(data => {
     data.forEach(animal => {
       new Animal(animal).render()
+      filter();
     })
-    filter();
     renderKeyword();
   })
 
@@ -27,15 +27,11 @@ Animal.prototype.render = function(){
 
   // make a new section
   const $newSection = $('<section></section>');
-  // fill that new section with the template html
   $newSection.html(myTemplate);
-  // find the h2, and assign it to the name
   $newSection.find('h2').text(this.title);
-  // find the image and assign it to the image_url
   $newSection.find('img').attr('src', this.image_url);
-  // find the p and assign it to the hobbies
   $newSection.find('p').text(this.description);
-  // append it to the main
+  $newSection.attr('keyword', this.keyword);
   $('main').append($newSection);
 
 }
@@ -57,10 +53,19 @@ function renderKeyword() {
     const $newOption = $(`<option value:"${keyword}">${keyword}</option>`);
     $option.append($newOption);
   });
-
-  // $('select').on('change',function(){
-  //   let $selected = this.value;
-    
-  // })
 }
 
+function clickEvent(event) {
+  const sect = $('section');
+  sect.each((index,value)=>{
+    if( $(value).attr('keyword') === event.target.value){
+      $(value).show();
+    } else{
+      $(value).hide();
+    }
+  }
+  )
+}
+$('select').change(clickEvent);
+
+$(function() {});
