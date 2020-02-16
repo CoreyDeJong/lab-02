@@ -7,15 +7,13 @@
     <link href="css/base.css" rel="stylesheet" type="text/css" />
     <link href="css/layouts.css" rel="stylesheet" type="text/css" />
     <link href="css/modules.css" rel="stylesheet" type="text/css" />
-<!-- HANDLEBARS -->
     <script id="temp" type="text/x-handlebars-template">
-      
-        <h2>{{title}}</h2>
-        <img src="{{image_url}}">
-        <p>{{description}}</p>
-
+      <div keyword="{{keyword}}">
+      <h2>{{title}}</h2>
+      <img src="{{image_url}}">
+      <p>{{description}}</p>
+    </div>
     </script>
-<!-- /HANDLEBARS -->
   </head>
   <body>
     <header>
@@ -26,7 +24,9 @@
       <button onclick="window.location.href = 'index.html' ">Previous Page</button>
     </header>
     <main>
-      <section id="photo-template"></section>
+      <section id="photo-template">
+        
+      </section>
     </main>
     <footer>
         &copy; 2020 Code Fellows

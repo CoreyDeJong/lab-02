@@ -1,10 +1,15 @@
 'use strict'
+let getTemplate = $('#temp').html();
+let templateRender = Handlebars.compile(getTemplate);
 
 $.ajax('data/page-2.json', {method: 'GET', dataType: 'JSON'})
   .then(data => {
     data.forEach(animal => {
-      new Animal(animal);
-    })
+      let newAnimal = new Animal(animal);
+      newAnimal.renderTemplate();
+      filter();
+    });
+    renderKeyword();
   })
 
 let animalArray = [];
@@ -18,48 +23,43 @@ function Animal(obj){
   animalArray.push(this);
 }
 
-Animal.prototype.render = function(){
-  const source = $('#temp').html();
-  const template = Handlebars.compile(source);
-  const context = { title: this.title, image_url: this.image_url, description: this.description};
-  return template(context);
+
+Animal.prototype.renderTemplate= function(){
+  $('#photo-template').append(templateRender(this));
 }
 
-animalArray.forEach(animal=>{
-  $('#photo-template').append(animal.render())
-})
+//keyword options
+const newOptionArray = [];
+
+function filter (){
+  animalArray.forEach(keys => {
+    if (!newOptionArray.includes(keys.keyword)){
+      newOptionArray.push(keys.keyword);
+    }
+  })
+}
+
+function renderKeyword() {
+  const $option = $('select')
+  newOptionArray.forEach(keyword => {
+    const $newOption = $(`<option value:"${keyword}">${keyword}</option>`);
+    $option.append($newOption);
+  });
+}
+
+function clickEvent(event) {
+  const sect = $('div');
+  sect.each((index, value)=>{
+    if( $(value).attr('keyword') === event.target.value){
+      console.log(value);
+      $(value).show();
+    } else{
+      $(value).hide();
+    }
+  }
+  )
+}
+$('select').change(clickEvent);
 
 
-// //keyword options
-// const newOptionArray = [];
-
-// function filter (){
-//   animalArray.forEach(keys => {
-//     if (!newOptionArray.includes(keys.keyword)){
-//       newOptionArray.push(keys.keyword);
-//     }
-//   })
-// }
-
-// function renderKeyword() {
-//   const $option = $('select')
-//   newOptionArray.forEach(keyword => {
-//     const $newOption = $(`<option value:"${keyword}">${keyword}</option>`);
-//     $option.append($newOption);
-//   });
-// }
-
-// function clickEvent(event) {
-//   const sect = $('section');
-//   sect.each((index,value)=>{
-//     if( $(value).attr('keyword') === event.target.value){
-//       $(value).show();
-//     } else{
-//       $(value).hide();
-//     }
-//   }
-//   )
-// }
-// $('select').change(clickEvent);
-
-// $(function() {});
+$(function() {});

@@ -57,8 +57,9 @@ function renderKeyword() {
 
 function clickEvent(event) {
   const sect = $('section');
-  sect.each((index,value)=>{
+  sect.each((index, value)=>{
     if( $(value).attr('keyword') === event.target.value){
+      console.log(value);
       $(value).show();
     } else{
       $(value).hide();
